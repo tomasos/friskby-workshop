@@ -1,37 +1,26 @@
 var d3 = require('d3');
+var moment = require('moment');
+
 
 module.exports = function(data) {
-  console.log(data);
-  var height = 200;
+  // svg properties
+  var height = 300;
   var width = 500;
+  var margin = 70;
+
   
-  var x = d3.scale.linear()
-      .domain([0, data.length])
-      .range([0, width]);
-
-  var y = d3.scale.linear()
-        .domain([d3.max(data), 0])
-        .range([0, height]);
-
-  var line = d3.svg.line()
-        .x(function(d, i) {
-          console.log(x(i));
-    return x(i);
-  })
-        .y(function(d, i) {
-          console.log(y(d));
-    return y(d);
-  });
-
+  // this sets the svg properties
   var graph = d3.select('#graph')
-        .attr('width', width)
-        .attr('height', height);
+        .attr('viewBox','0 0 ' +  width + ' ' + height)
+        .attr('preserveAspectRation', 'xMinYMin meet');
 
-  var graphline = graph
-        .append('path')
-        .attr('d', line(data))
-        .attr('fill', 'none')
-        .attr('stroke', '#333');
+  graph.append('g')
+    .append('text')
+    .attr('fill', '#333')
+    .attr('dy', 50)
+    .text('Velkommen!');
+  
+  
   
 };
 

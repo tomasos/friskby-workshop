@@ -1,0 +1,26 @@
+.tool {
+    display: none;
+    font-size: 10px;
+}
+
+.circle:hover .tool {
+    display: block;
+}
+
+#graph {
+    width: 100%;
+}
+
+.axis path {
+    fill: none;
+    stroke: #999;
+}
+
+.axis text {
+    font-size: 6px;
+    color: #999;
+}
+
+.volume {
+    font-weight: bold;
+}
