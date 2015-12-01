@@ -6,6 +6,7 @@ d3.js workshop for friskby
 2.  ```cd friskby-workshop```
 3. ```npm install```
 4.  ```grunt```
+5. go to localhost:8000 in your browser
 
 
 ## Resources
