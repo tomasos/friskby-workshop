@@ -1,18 +1,21 @@
 var React = require('react');
 var superagent = require('superagent');
 
-var chart = require('../charts/linegraph.js');
+var chart = require('../charts/linegraph-finished.js');
 var dom = React.DOM;
 
 module.exports = React.createClass({
   getInitialState: function() {
 
     return {
-      currentSensor: 'OJ Brochs Gate',
+      currentSensor: 'Florida',
       currentData: [],
       sensors: [
         {name: 'Grønnlien', location: '60.369803,5.33422,101', dataids: ['NJBGassGroenllien', 'NJBStoevGronnlien']},
-        {name: 'OJ Brochs Gate', location: '60.3854551014,5.3171092272,18', dataids: ['OAMStoevOJBrochsGate']}
+        {name: 'OJ Brochs Gate', location: '60.3854551014,5.3171092272,18', dataids: ['OAMStoevOJBrochsGate']},
+        {name: 'Random', location: '60.3854551014,5.3171092272,18', dataids: ['RANDOM']},
+        {name: 'Florida', location: '60.3854551014,5.3171092272,18', dataids: ['MET:TEMP:FLORIDA']}
+        
       ]
     };
   },
@@ -23,7 +26,7 @@ module.exports = React.createClass({
 
   compressData: function(data) {
     // compute average
-    var n = 1000;
+    var n = 100;
     var count = 0;
 
     var compressedArray = [];
@@ -67,13 +70,15 @@ module.exports = React.createClass({
       return false;
     });
     if(sensordata !== undefined) {
-      superagent.get('https://friskby.herokuapp.com/sensor/api/reading/' + sensordata.dataids[0])
+      superagent.get('https://friskby.herokuapp.com/sensor/api/reading/' + sensordata.dataids[0] + '?num=1000')
         .end(function(err, res) {
           var data = JSON.parse(res.text);
           var currentData = this.compressData(data);
           this.setState({currentData: currentData});
         }.bind(this));
     }
+
+    // this.setState({currentData: [['Tue Dec 01 2015 17:23:44 GMT+0100 (CET)', 123], ['Tue Dec 02 2015 17:23:44 GMT+0100 (CET)', 133], ['Tue Dec 03 2015 17:23:44 GMT+0100 (CET)', 143]] });
   },
 
   changeCurrentSensor: function(event) {
