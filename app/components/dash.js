@@ -70,7 +70,7 @@ module.exports = React.createClass({
       return false;
     });
     if(sensordata !== undefined) {
-      superagent.get('https://friskby.herokuapp.com/sensor/api/reading/' + sensordata.dataids[0] + '?num=1000')
+      superagent.get('https://friskby.herokuapp.com/sensor/api/reading/' + sensordata.dataids[0] + '?num=1012')
         .end(function(err, res) {
           var data = JSON.parse(res.text);
           var currentData = this.compressData(data);
