@@ -1,7 +1,7 @@
 var React = require('react');
 var superagent = require('superagent');
 
-var chart = require('../charts/linegraph-finished.js');
+var chart = require('../charts/linegraph.js');
 var dom = React.DOM;
 
 module.exports = React.createClass({
