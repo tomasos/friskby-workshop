@@ -12,3 +12,18 @@ d3.js workshop for friskby
 ## Resources
 d3 https://github.com/mbostock/d3/wiki
 moment http://momentjs.com/docs/
+
+
+
+https://github.com/tomasos/friskby-workshop
+
+npm install -g grunt-cli
+
+Oppgåver:
+
+1. x- og y-funksjon
+2. line-funksjon
+3. tegne linje i svg
+4. lage akser
+5. legge på sirkel og tooltip med data
+6. animere linjeteikning
